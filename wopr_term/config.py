@@ -1,0 +1,17 @@
+
+# config.py
+W, H = 960, 720
+
+GREEN = (0, 255, 120)
+BLACK = (0, 0, 0)
+
+FONT_NAME = "Menlo"
+FONT_SIZE = 24
+
+TOP_MARGIN = 60
+BOTTOM_MARGIN = 60
+LEFT_MARGIN = 80
+
+USE_GLOW = True
+USE_SCANLINES = True
+USE_VIGNETTE = True
