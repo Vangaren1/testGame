@@ -1,12 +1,19 @@
-
 # terminal.py
 import pygame
 from .config import (
-    W, H, GREEN, BLACK,
-    TOP_MARGIN, BOTTOM_MARGIN, LEFT_MARGIN,
-    USE_GLOW, USE_SCANLINES, USE_VIGNETTE
+    W,
+    H,
+    GREEN,
+    BLACK,
+    TOP_MARGIN,
+    BOTTOM_MARGIN,
+    LEFT_MARGIN,
+    USE_GLOW,
+    USE_SCANLINES,
+    USE_VIGNETTE,
 )
 from .effects import draw_scanlines
+
 
 class Terminal:
     def __init__(self, font):
@@ -71,3 +78,9 @@ class Terminal:
             screen.blit(vignette, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
         pygame.display.flip()
+
+    # terminal.py
+    def render(self, surface):
+        # surface is already clipped to just the terminal area
+        surface.fill((0, 0, 0))  # or transparent bg if you want
+        # draw all lines, prompt, cursor starting at (0,0) in this surface

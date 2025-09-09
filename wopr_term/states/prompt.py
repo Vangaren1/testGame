@@ -1,9 +1,10 @@
-
 # states/prompt.py
 import pygame
 from ..engine import State
 from .chess import ChessState
 from .gtw import GTWState
+from .tictactoe import TicTacToeState
+
 
 class PromptState(State):
     def enter(self):
@@ -41,9 +42,18 @@ class PromptState(State):
             self.engine.quit()
         elif cmd == "GAMES":
             for g in [
-                "FALKEN'S MAZE","BLACK JACK","GIN RUMMY","HEARTS","CHESS",
-                "POKER","FIGHTER COMBAT","GUERRILLA ENGAGEMENT","DESERT WARFARE",
-                "AIR-TO-GROUND ACTIONS","THEATERWIDE TACTICAL WARFARE","GLOBAL THERMONUCLEAR WAR"
+                "FALKEN'S MAZE",
+                "BLACK JACK",
+                "GIN RUMMY",
+                "HEARTS",
+                "CHESS",
+                "POKER",
+                "FIGHTER COMBAT",
+                "GUERRILLA ENGAGEMENT",
+                "DESERT WARFARE",
+                "AIR-TO-GROUND ACTIONS",
+                "THEATERWIDE TACTICAL WARFARE",
+                "GLOBAL THERMONUCLEAR WAR",
             ]:
                 self.term.println(g)
         elif cmd.startswith("PLAY"):
@@ -52,6 +62,8 @@ class PromptState(State):
                 self.engine.set_state(ChessState)
             elif name == "GLOBAL THERMONUCLEAR WAR":
                 self.engine.set_state(GTWState)
+            elif name == "TIC-TAC-TOE":
+                self.engine.set_state(TicTacToeState)
             else:
                 self.term.println(f"{name or '(none)'}: (demo not implemented)")
         else:

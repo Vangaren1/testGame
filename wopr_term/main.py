@@ -1,19 +1,23 @@
-
 # main.py
 import pygame
 from .config import W, H, FONT_NAME, FONT_SIZE
 from .engine import Engine
 from .states.login import LoginState
+from .states.tictactoe import TicTacToeState
+
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((W, H))
     clock = pygame.time.Clock()
 
-    font = pygame.font.SysFont(FONT_NAME, FONT_SIZE) or pygame.font.Font(None, FONT_SIZE)
+    font = pygame.font.SysFont(FONT_NAME, FONT_SIZE) or pygame.font.Font(
+        None, FONT_SIZE
+    )
 
     engine = Engine(screen, font)
-    engine.set_state(LoginState)
+    # engine.set_state(LoginState)
+    engine.set_state(TicTacToeState)
 
     pygame.key.start_text_input()
 
@@ -29,7 +33,10 @@ def main():
         engine.state.update(dt)
         engine.state.draw(screen)
 
+        pygame.display.flip()
+
     pygame.quit()
+
 
 if __name__ == "__main__":
     main()
